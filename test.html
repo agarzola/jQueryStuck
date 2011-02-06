@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-  	<link rel="stylesheet" href="stuck.css">
+  	<link rel="stylesheet" href="stuck.css" />
 		<script type="text/javascript" src="jquery.js"></script>
 		<script type="text/javascript" src="jquery.stuck.js"></script>
 	</head>
@@ -36,10 +36,11 @@
       <h3>Here be some stuff that doesn&rsquo;t need to move&hellip;</h3>
       <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Curabitur blandit tempus porttitor. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.</p>
       <div id="container">
-        <div id="sidebarContent">
-          <img src="http://img.youtube.com/vi/pfG3VXaasF0/3.jpg" alt="Mr. Murray!">
-          <p>Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-        </div><!--sidebarContent-->
+        <div id="movingContent">
+          <img src="http://img.youtube.com/vi/pfG3VXaasF0/3.jpg" alt="Ladies &amp; gentlemen, Mr. Bill Murray.">
+          <p class="description">You&rsquo;ll notice that this sidebar has CSS transitions applied to it (namely, background &amp; box-shadow) that are fired when the <code>fixed</code> state is in effect. The target properties are specified in the <code>.floating</code> class, and are visible in Chrome, Safari, Firefox and Opera. IE should just show the change in styles, without the smooth transition. The point being that by applying classes we can make the sidebar appear different when it is fixed.</p>
+          <p class="description">As implied above, various classes can be applied for both the <code>fixed</code> and <code>bottom</code> states. These classes stack on top of the default styles that are already applied by default in your stylesheet. In this demo, the <code>.fixed</code> class makes the element stick, while the <code>.floating</code> class specifies all other style properties. Useful for using the <code>.fixed</code> class throughout your document without being tied to the particular styles pertinent only to the sidebar.</p>
+        </div><!--movingContent-->
       </div><!--container-->
     </div><!--sidebar-->
     <div id="footer">
@@ -47,10 +48,11 @@
     </div><!--footer-->
     <script>
     $(document).ready(function(){
-      $("#sidebarContent").stuck({
+      $("#movingContent").stuck({
         footer: "#footer",
+        fixedClass: "fixed floating", // it can apply more than one class
         fixedClassMargin: 12,
-        bottomClassMargin: 56,
+        bottomClassMargin: 0,
         reachedBottom: function(event, config){
           console.debug(config);
         }

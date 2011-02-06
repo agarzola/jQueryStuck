@@ -33,20 +33,20 @@ $.stucker = function(theObj, options) {
       theObj: theObj,
 			theParent: $(theObj).parent(),
 			// dist. between top of doc and top of theObj:
-			objTop: $(theObj).offset().top - parseFloat($(theObj).css('marginTop').replace(/auto/, 0)),
+			objTop: $(theObj).offset().top,
 			// height of theObj:
-			objHeight: parseFloat($(theObj).css('height'))
+			objHeight: $(theObj).height() + parseFloat($(theObj).css('marginTop').replace(/auto/, 0)) + parseFloat($(theObj).css('paddingTop').replace(/auto/, 0)) + parseFloat($(theObj).css('paddingBottom').replace(/auto/, 0))
 		}
 		if ( options.footer ) {
 		  // dist. between top of doc and top of footer:
-			config.bottomLength = $(options.footer).offset().top - parseFloat($(options.footer).css('marginTop').replace(/auto/, 0));
-			config.bottomLimit = $(document).height() - config.bottomLength;
-  		config.contHeight = $(document).height() - config.objTop - config.bottomLimit;
+			config.footerTop = $(options.footer).offset().top - parseFloat($(options.footer).css('marginTop').replace(/auto/, 0));
+			config.effectiveFooterHeight = $(document).height() - config.footerTop;
+  		config.containerHeight = $(document).height() - config.objTop - config.effectiveFooterHeight + parseFloat($(theObj).css('marginTop').replace(/auto/, 0));
   		// Then, we set the container’s height.
   		// If calculated container height is greater than obj height:
-  		if (config.contHeight >= config.objHeight) {
+  		if (config.containerHeight >= config.objHeight) {
   			// set container height to the calculated height:
-  			$(config.theParent).css('height', config.contHeight + "px");
+  			$(config.theParent).css('height', config.containerHeight + "px");
   		} else {
   		  // If calculated height is less than ad height:
   			// set container height to obj height:
@@ -57,10 +57,10 @@ $.stucker = function(theObj, options) {
 		  $(theObj).reachedBottom(options.reachedBottom);
 		}
 		if ( options.footer && options.bottomClassMargin ) {
-  	  config.contHeight -= options.bottomClassMargin;
+  	  config.containerHeight -= options.bottomClassMargin;
   	}
 		config.init = true;
-		$(window).scroll();
+		$(window).scroll(); // Force the function assigned to the window scroll. Not nice; other functions may be attached and fired. TODO: Place function in its own namespace. So lazy.
   }).bind("stuckOptions",function(){
     $.extend(true, options, arguments[1]);
     this.trigger("stuckInit");
@@ -87,9 +87,9 @@ $.stucker = function(theObj, options) {
   	  } else {
   	    // Yes, there is a footer with wich object may collide, so let’s check whether we’re at the bottom.
   	    // if the object is actually larger than its parent (otherwise, no need to move it at all).
-  	    if (parseFloat($(config.theParent).css('height')) > config.objHeight) {
+  	    if ($(config.theParent).height() > config.objHeight) {
   	      // if scroll location is so low that object breaks out of container:
-      		if (config.viewPortPos >= (config.contHeight + config.objTop - config.objHeight) ) {
+      		if (config.viewPortPos >= (config.containerHeight + config.objTop - config.objHeight) ) {
       			// remove fixed class, in case we’ve applied it (likely):
       			$(config.theObj).removeClass(options.fixedClass);
       			// now we check to see if the bottom class has already been applied
@@ -115,12 +115,13 @@ $.stucker = function(theObj, options) {
   	// if the criteria for the effect is not met
   	} else {
   		// remove the classes, in case we’re applied them:
-  		$(config.theObj).removeClass('fixed').removeClass('bottom');
+  		$(config.theObj).removeClass(options.fixedClass).removeClass(options.bottomClass);
   	}
   });
   $(theObj).trigger("stuckInit");
 };
 $.stucker.defaultOptions = {
+  // TODO: Figure out a way to get these values from the stylesheet. Also, difference in shadow spread value must be taken into account, but only for the bottomClass value.
   fixedClass: 'fixed',
   bottomClass: 'bottom'
 }
