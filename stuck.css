@@ -1,39 +1,42 @@
+* {
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
 body{
   width:800px;
   position:relative;
   color: #333;
-  background: #ddd;
+  background: #f5f5f1;
   margin: 30px auto;
   font-family: Georgia, Times, serif;
+  text-shadow: 0px 1px 0px #fffff5;
 }
-#main1, #main2{
+.main{
   width:550px;
-  margin-right:25px;
+  margin: 0 25px 24px 0;
   float:left;
+  clear: both;
 }
-#sidebar1, #sidebar2{
-  width:225px;
-  float:right;
-  position:relative;
+.sidebar{
+  width: 225px;
+  float: right;
+  position: relative;
+  padding-left: 12px;
 }
-#container1, #container2{
+.container{
   position:relative;
-  margin-top: 24px;
+  margin: 24px 0 0 -12px;
 }
 #movingContent1, #movingContent2{
   position: absolute;
   width: 225px;
   padding: 12px;
-  background: #efefef;
-	-webkit-box-shadow: 2px 2px 3px #ccc;
-	-moz-box-shadow: 0px 0px 3px #ccc;
-	-o-box-shadow: 0px 0px 3px #ccc;
-	box-shadow: 0px 0px 3px #ccc;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-  -webkit-transition: -webkit-box-shadow 0.25s ease, background-color 1s ease, border 0.1s ease, padding 0.1s ease;
-  -moz-transition: -moz-box-shadow 0.25s ease, background-color 1s ease, border 0.1s ease, padding 0.1s ease;
-  -o-transition: box-shadow 0.25s ease, background-color 1s ease, border 0.1s ease, padding 0.1s ease;
+	-webkit-box-shadow: none;
+	-moz-box-shadow: none;
+	box-shadow: 0px 0px 0px #ccc;
+  -webkit-transition: -webkit-box-shadow 0.25s ease;
+  -moz-transition: -moz-box-shadow 1s ease;
+  -o-transition: box-shadow 1s ease;
 }
 h1,h3{
   margin-top: 0;
@@ -42,6 +45,7 @@ p{
   margin:0 0 4px 0;
   text-indent:12px;
   color: #777;
+  clear: both;
 }
 p:first-of-type{
   text-indent: 0;
@@ -54,11 +58,12 @@ img{
   width: 120px;
   height: 90px;
 }
-#footer{
-  clear:both;
-  height:400px;
-  background:#eee;
-  margin-top: 12px;
+#delimiter{
+  clear: both;
+  margin: 24px 0;
+  padding: 40px;
+  border: 1px solid #999;
+  text-align: center;
 }
 #movingContent1.fixed, #movingContent2.fixed {
 	position: fixed;
@@ -66,11 +71,9 @@ img{
 	margin-top: 12px;
 }
 #movingContent1.floating, #movingContent2.floating {
-  -webkit-box-shadow: 4px 4px 6px #666;
-  -moz-box-shadow: 0px 0px 12px #bbb;
-  -o-box-shadow: 0px 0px 12px #bbb;
-  box-shadow: 0px 0px 12px #bbb;
-  background-color: #def;
+  -webkit-box-shadow: 0px 0px 24px #ccc;
+  -moz-box-shadow: 0px 0px 24px #ccc;
+  box-shadow: 0px 0px 24px #ccc;
 }
 #movingContent1.bottom, #movingContent2.bottom {
 	position: absolute;

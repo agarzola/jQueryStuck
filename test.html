@@ -7,7 +7,7 @@
 	</head>
 	
 	<body>
-	  <div id="main1">
+	  <div class="main">
 	    <h1>jQuery Stuck Plugin demo</h1>
 	    <p class="description">This jQuery plugin aims to facilitate keeping a sidebar item visible when the user scrolls past it, with the (entirely optional!) ability to constrain its movement within a container box so that it doesn&rsquo;t interfere with a footer-type div. It also fires a series of custom events, allowing the developer to assign custom functions to the events (for the time being, it only fires one event. More are in the works.) Finally, it will also allow multiple objects to be stuck, so that section-specific sidebar items can stay with the user only as long as the relevant section is in view.</p>
 	    <p class="description"><strong>This plugin is still in its early stages, and is not recommended for production environments.</strong></p>
@@ -32,25 +32,23 @@
       <p>Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Vestibulum id ligula porta felis euismod semper. Etiam porta sem malesuada magna mollis euismod. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante venenatis dapibus posuere velit aliquet.</p>
       <p>Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
     </div><!--main1-->
-    <div id="sidebar1">
+    <div class="sidebar">
       <h3>Here be some stuff that doesn&rsquo;t need to move&hellip;</h3>
       <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Curabitur blandit tempus porttitor. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.</p>
-      <div id="container1">
+      <div class="container">
         <div id="movingContent1">
           <img src="http://img.youtube.com/vi/pfG3VXaasF0/3.jpg" alt="Ladies &amp; gentlemen, Mr. Bill Murray.">
-          <p class="description">You&rsquo;ll notice that this sidebar has CSS transitions applied to it (namely, background &amp; box-shadow) that are fired when the <code>fixed</code> state is in effect. The target properties are specified in the <code>.floating</code> class, and are visible in Chrome, Safari, Firefox and Opera. IE should just show the change in styles, without the smooth transition. The point being that by applying classes we can make the sidebar appear different when it is fixed.</p>
+          <p class="description">You&rsquo;ll notice that this sidebar has CSS transitions applied to it (namely, box-shadow) that are fired when the <code>fixed</code> state is in effect. The target properties are specified in the <code>.floating</code> class, and are visible in Chrome &amp; Safari. IE, Firefox &amp; Opera should just show the change in styles, without the smooth transition. The point being that by applying classes we can make the sidebar appear different when it is fixed.</p>
           <p class="description">As implied above, various classes can be applied for both the <code>fixed</code> and <code>bottom</code> states. These classes stack on top of the default styles that are already applied by default in your stylesheet. In this demo, the <code>.fixed</code> class makes the element stick, while the <code>.floating</code> class specifies all other style properties. Useful for using the <code>.fixed</code> class throughout your document without being tied to the particular styles pertinent only to the sidebar.</p>
         </div><!--movingContent1-->
       </div><!--container1-->
     </div><!--sidebar1-->
-    <div id="footer">
-      <p>This is the footer. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Vestibulum id ligula porta felis euismod semper. Etiam porta sem malesuada magna mollis euismod. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante venenatis dapibus posuere velit aliquet.</p>
-    </div><!--footer-->
-    <div id="main2">
-	    <h1>jQuery Stuck Plugin demo</h1>
-	    <p class="description">This jQuery plugin aims to facilitate keeping a sidebar item visible when the user scrolls past it, with the (entirely optional!) ability to constrain its movement within a container box so that it doesn&rsquo;t interfere with a footer-type div. It also fires a series of custom events, allowing the developer to assign custom functions to the events (for the time being, it only fires one event. More are in the works.) Finally, it will also allow multiple objects to be stuck, so that section-specific sidebar items can stay with the user only as long as the relevant section is in view.</p>
-	    <p class="description"><strong>This plugin is still in its early stages, and is not recommended for production environments.</strong></p>
-  	  <p>Cras mattis consectetur purus sit amet fermentum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Curabitur blandit tempus porttitor. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec ullamcorper nulla non metus auctor fringilla.</p>
+    <div id="delimiter">
+      <p>This is the delimiter that will stop the stuck sidebar above.</p>
+    </div><!--delimiter-->
+    <div class="main">
+	    <h1>But wait&hellip; There&rsquo;s more!</h1>
+	    <p>Cras mattis consectetur purus sit amet fermentum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Curabitur blandit tempus porttitor. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec ullamcorper nulla non metus auctor fringilla.</p>
       <p>Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Donec ullamcorper nulla non metus auctor fringilla. Maecenas sed diam eget risus varius blandit sit amet non magna. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Maecenas faucibus mollis interdum.</p>
       <p>Donec sed odio dui. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Vestibulum id ligula porta felis euismod semper. Vestibulum id ligula porta felis euismod semper. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
       <p>Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Nullam id dolor id nibh ultricies vehicula ut id elit. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Donec sed odio dui.</p>
@@ -71,20 +69,19 @@
       <p>Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Vestibulum id ligula porta felis euismod semper. Etiam porta sem malesuada magna mollis euismod. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante venenatis dapibus posuere velit aliquet.</p>
       <p>Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
     </div><!--main2-->
-    <div id="sidebar2">
-      <h3>Here be some stuff that doesn&rsquo;t need to move&hellip;</h3>
-      <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Curabitur blandit tempus porttitor. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.</p>
-      <div id="container2">
+    <div class="sidebar">
+      <h3>Here be a second one! It&rsquo;s madness!</h3>
+      <div class="container">
         <div id="movingContent2">
           <img src="http://img.youtube.com/vi/QWJLWERyvkk/2.jpg" alt="Or, as he&rsquo;s known in some circles, Bill fucking Murray.">
-          <p class="description">You can even apply the effect to multiple elements. I can think of a few configurations where it may present problems, but for really basic stuff like this, where one element has a delimiter (the <code>#footer</code> div above) that contains it, allowing another element below it to continue, it can be very useful.</p>
+          <p class="description">You can even apply the effect to multiple elements. I can think of a few configurations where it may present problems, but for really basic stuff like this, where one element has a delimiter (the <code>#delimiter</code> div above) that contains it, allowing another element below it to continue, it can be very useful.</p>
         </div><!--movingContent2-->
       </div><!--container2-->
     </div><!--sidebar2-->
     <script>
     $(document).ready(function(){
       $("#movingContent1").stuck({
-        footer: "#footer",
+        delimiter: "#delimiter",
         fixedClass: "fixed floating", // it can apply more than one class
         fixedClassMargin: 12,
         bottomClassMargin: 0,
@@ -100,6 +97,30 @@
           console.debug(config);
         }
       });
+      // This just makes my background nice and gritty looking without an image.
+      function generateNoise(opacity) {
+        if ( !!!document.createElement("canvas").getContext ) {
+          return false;
+        }
+        var canvas = document.createElement("canvas"),
+          ctx = canvas.getContext("2d"),
+          x, y, r, g, b,
+          opacity = opacity || .05;
+          canvas.width = 100;
+          canvas.height = 100;
+        for ( x = 0; x < canvas.width; x++ ) {
+          for ( y = 0; y < canvas.height; y++ ) {
+            r = Math.floor( Math.random() * 255);
+            g = Math.floor( Math.random() * 255);
+            b = Math.floor( Math.random() * 255);
+            
+            ctx.fillStyle = "rgba(" + r + ", " + r + ", " + r + ", " + opacity + ")";
+            ctx.fillRect(x, y, 1, 1);
+          }
+        }
+        document.body.style.backgroundImage = "url(" + canvas.toDataURL("image/png") + ")";
+      }
+      generateNoise();
     });
     </script>
 	</body>

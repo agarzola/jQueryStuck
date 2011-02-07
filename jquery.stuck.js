@@ -37,11 +37,11 @@ $.stucker = function(theObj, options) {
 			// height of theObj:
 			objHeight: $(theObj).height() + parseFloat($(theObj).css('marginTop').replace(/auto/, 0)) + parseFloat($(theObj).css('paddingTop').replace(/auto/, 0)) + parseFloat($(theObj).css('paddingBottom').replace(/auto/, 0))
 		}
-		if ( options.footer ) {
-		  // dist. between top of doc and top of footer:
-			config.footerTop = $(options.footer).offset().top - parseFloat($(options.footer).css('marginTop').replace(/auto/, 0));
-			config.effectiveFooterHeight = $(document).height() - config.footerTop;
-  		config.containerHeight = $(document).height() - config.objTop - config.effectiveFooterHeight + parseFloat($(theObj).css('marginTop').replace(/auto/, 0));
+		if ( options.delimiter ) {
+		  // dist. between top of doc and top of delimiter:
+			config.delimiterTop = $(options.delimiter).offset().top - parseFloat($(options.delimiter).css('marginTop').replace(/auto/, 0));
+			config.effectiveDelimiterHeight = $(document).height() - config.delimiterTop;
+  		config.containerHeight = $(document).height() - config.objTop - config.effectiveDelimiterHeight + parseFloat($(theObj).css('marginTop').replace(/auto/, 0));
   		// Then, we set the container’s height.
   		// If calculated container height is greater than obj height:
   		if (config.containerHeight >= config.objHeight) {
@@ -56,7 +56,7 @@ $.stucker = function(theObj, options) {
 		if ( options.reachedBottom ) {
 		  $(theObj).reachedBottom(options.reachedBottom);
 		}
-		if ( options.footer && options.bottomClassMargin ) {
+		if ( options.delimiter && options.bottomClassMargin ) {
   	  config.containerHeight -= options.bottomClassMargin;
   	}
 		config.init = true;
@@ -77,15 +77,15 @@ $.stucker = function(theObj, options) {
   	// if viewport height is greater than the ad height, AND
   	// if container div height is greater than the ad height:
   	if (config.init == true && config.viewPortPos >= config.objTop && config.viewPortHeight > config.objHeight) {
-  	  // do we need to worry about a footer?
-  	  if (!options.footer) {
-  	    // no need to worry about footer, then just fix if viewport is below original placement of stuck object.
+  	  // do we need to worry about a delimiter?
+  	  if (!options.delimiter) {
+  	    // no need to worry about delimiter, then just fix if viewport is below original placement of stuck object.
   	    // remove bottom class, in case we’ve applied it:
   			$(config.theObj).removeClass(options.bottomClass);
   			// add fixed class:
   			$(config.theObj).addClass(options.fixedClass);
   	  } else {
-  	    // Yes, there is a footer with wich object may collide, so let’s check whether we’re at the bottom.
+  	    // Yes, there is a delimiter with wich object may collide, so let’s check whether we’re at the bottom.
   	    // if the object is actually larger than its parent (otherwise, no need to move it at all).
   	    if ($(config.theParent).height() > config.objHeight) {
   	      // if scroll location is so low that object breaks out of container:
